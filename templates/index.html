@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Кнопка с иконкой "Дом" слева -->
+    <div class="home-button">
+        <a href="/" class="btn btn-primary">
+            <i class="fas fa-home"></i> Домой
+        </a>
+    </div>
+
+<h2 class="center-text">Список студентов</h2>
+
+    <!-- Форма для поиска -->
+    <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Введите имя или email">
+        <button type="submit">Найти</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Возраст</th>
+            <th>Айти</th>  
+            <th>Корейский язык</th>
+            <th>История</th>
+            <th>Средний балл</th>
+            <th>Действия</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.IT if student.IT is not none else 'Нет данных' }}</td>  
+            <td>{{ student.Korean if student.Korean is not none else 'Нет данных' }}</td> 
+            <td>{{ student.History if student.History is not none else 'Нет данных' }}</td> 
+            <td>
+                {% if student.grade is not none %}
+                {{ student.grade }}
+            {% else %}
+                Нет данных
+            {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('edit_student', id=student.id) }}">Редактировать</a> |
+                <a href="/delete/{{ student.id }}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Пагинация -->
+    <div>
+        {% if students.has_prev %}
+            <a href="/?page={{ students.prev_num }}">Предыдущая</a>
+        {% endif %}
+        {% if students.has_next %}
+            <a href="/?page={{ students.next_num }}">Следующая</a>
+        {% endif %}
+    </div>
+
+    <h2>Добавить студента</h2>
+    <form action="/add" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" required><br>
+        <label for="IT">Айти:</label>
+        <input type="number" id="IT" name="IT" step="0.1" ><br>
+        <label for="Korean">Корейский язык:</label>
+        <input type="number" id="Korean" name="Korean" step="0.1" ><br>    
+        <label for="History">История:</label>
+        <input type="number" id="History" name="History" step="0.1" ><br> 
+
+        <button type="submit">Добавить</button>
+    </form>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

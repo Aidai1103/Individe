@@ -1,0 +1,145 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Заголовки */
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 32px;
+    color: black; /* Белый цвет текста */
+    font-family: 'Playfair Display', serif; /* Использование нового шрифта */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Форма */
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    transition: transform 0.3s ease-in-out;
+}
+
+form:hover {
+    transform: scale(1.02);
+}
+
+/* Заголовок формы */
+form h2 {
+    font-size: 26px;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Стили для лейблов */
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Стили для полей ввода */
+form input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Стили для полей при фокусе */
+form input:focus {
+    border-color: #3498db;
+    background-color: #eaf5ff;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.6);
+    outline: none;
+}
+
+/* Кнопка */
+form button {
+    width: 100%;
+    padding: 16px;
+    background-color: #2273a9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку */
+form button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+/* Стили для ссылки */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Эффект при наведении на ссылку */
+a:hover {
+    color: #1f6fa5;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+a:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
+/* Контейнер для выравнивания */
+.container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    form input, form button {
+        font-size: 14px;
+    }
+}
+
+/* Стили для страницы на планшетах */
+@media (min-width: 601px) and (max-width: 1024px) {
+    form {
+        padding: 25px;
+    }
+}
